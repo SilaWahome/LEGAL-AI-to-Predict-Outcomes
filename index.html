@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MUTUSE LEGAL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            max-width: 400px; /* Limit the width of the form */
+        }
+
+        label {
+            margin: 10px 0 5px; /* Add spacing between labels and inputs */
+        }
+
+        input, select {
+            padding: 8px; /* Add padding for input elements */
+            margin-bottom: 15px; /* Add margin below each input */
+            border: 1px solid #ccc; /* Add border for input fields */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        button {
+            padding: 10px; /* Add padding to the button */
+            background-color: #007BFF; /* Button color */
+            color: white; /* Text color */
+            border: none; /* No border */
+            border-radius: 4px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker button on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Mutuse Ndegwa </h1>
+    <form method="post" action="/predict">
+        <label for="appeal_district">Appeal District:</label>
+        <select name="appeal_district" required>
+            {% for district in appeal_districts %}
+            <option value="{{ district }}">{{ district }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="trial_district">Trial District:</label>
+        <select name="trial_district" required>
+            {% for district in trial_districts %}
+            <option value="{{ district }}">{{ district }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="offense">Offense:</label>
+        <select name="offense" required>
+            {% for offense in offenses %}
+            <option value="{{ offense }}">{{ offense }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="no_female_appealant">Number of Female Appellants:</label>
+        <input type="number" name="no_female_appealant" value="0" required>
+
+        <label for="no_public_witness">Number of Public Witnesses:</label>
+        <input type="number" name="no_public_witness" value="0" required>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
